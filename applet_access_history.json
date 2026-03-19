@@ -1,0 +1,14 @@
+{
+  "applets": [{
+    "lastAccessTime": "2025-12-20T17:08:27.212462Z",
+    "firstAccessTime": "2025-11-24T21:36:43.672817Z",
+    "source": {
+      "drive": {
+        "resourceId": "12uPRPNro-iIhW2SgLqnNaL4P5xFSrR9Q",
+        "revisionId": "0B_Ro1AIoIqxmRzJrbWNNSHlHTElBaUJUWHZocFZxUWZ5NGd3PQ"
+      }
+    },
+    "name": "André Bósio - Fisioterapia e Osteopatia",
+    "description": "Website profissional para André Bósio, Fisioterapeuta e Osteopata. Encontre informações sobre tratamentos, localização e agende sua consulta."
+  }]
+}

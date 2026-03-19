@@ -1,0 +1,422 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>André Bósio - Fisioterapia e Osteopatia</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#084b84',
+                        accent: '#7dea9b',
+                        light: '#ffffff',
+                    },
+                    fontFamily: {
+                        sans: ['Avenir', 'Lato', 'sans-serif'],
+                    },
+                },
+            },
+        };
+    </script>
+    
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, margin-top 0.3s ease-out;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            margin-top: 1rem;
+        }
+        .faq-item.active svg {
+            transform: rotate(180deg);
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+  }
+}
+</script>
+</head>
+<body class="bg-light font-sans text-gray-800">
+
+    <!-- HEADER -->
+    <header class="bg-light shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="flex items-center">
+                <img src="Screenshot_20251217_231040_Files by Google" alt="Logo André Bósio" class="h-10 md:h-12 w-auto object-contain">
+            </a>
+            
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex space-x-6">
+                <a href="#sobre" class="text-gray-600 hover:text-primary font-medium transition duration-300">Sobre Mim</a>
+                <a href="#servicos" class="text-gray-600 hover:text-primary font-medium transition duration-300">Tratamentos</a>
+                <a href="#local" class="text-gray-600 hover:text-primary font-medium transition duration-300">Localização</a>
+                <a href="#avaliacoes" class="text-gray-600 hover:text-primary font-medium transition duration-300">Avaliações</a>
+                <a href="#faq" class="text-gray-600 hover:text-primary font-medium transition duration-300">Dúvidas</a>
+                <a href="#contato" class="text-gray-600 hover:text-primary font-medium transition duration-300">Contato</a>
+            </nav>
+            
+            <!-- Mobile Toggle -->
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-primary focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-light border-t border-gray-100">
+            <nav class="px-6 pt-2 pb-4 flex flex-col space-y-2">
+                <a href="#sobre" class="mobile-link text-gray-600 hover:text-primary py-2 border-b border-gray-50">Sobre Mim</a>
+                <a href="#servicos" class="mobile-link text-gray-600 hover:text-primary py-2 border-b border-gray-50">Tratamentos</a>
+                <a href="#local" class="mobile-link text-gray-600 hover:text-primary py-2 border-b border-gray-50">Localização</a>
+                <a href="#avaliacoes" class="mobile-link text-gray-600 hover:text-primary py-2 border-b border-gray-50">Avaliações</a>
+                <a href="#faq" class="mobile-link text-gray-600 hover:text-primary py-2 border-b border-gray-50">Dúvidas</a>
+                <a href="#contato" class="mobile-link text-gray-600 hover:text-primary py-2 last:border-0">Contato</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section id="inicio" class="relative bg-primary text-light overflow-hidden">
+            <div class="absolute top-0 right-0 w-1/3 h-full bg-white opacity-[0.03] -skew-x-12 translate-x-20"></div>
+            <div class="absolute bottom-0 left-0 w-64 h-64 bg-accent opacity-10 rounded-full -translate-x-1/2 translate-y-1/2 blur-3xl"></div>
+
+            <div class="container mx-auto px-6 py-24 md:py-32 relative z-10 flex flex-col items-center text-center">
+                <div class="mb-8 animate-fade-in">
+                    <img src="Screenshot_20251217_231040_Files by Google" alt="André Bósio - Fisioterapia e Osteopatia" class="w-full max-w-lg md:max-w-xl lg:max-w-2xl h-auto drop-shadow-2xl">
+                </div>
+                <p class="max-w-2xl mx-auto text-lg md:text-xl mb-12 text-gray-200 leading-relaxed">
+                    Te ajudo a superar a dor, se movimentar melhor e viver em equilíbrio.
+                </p>
+                <div class="flex justify-center">
+                    <a href="https://wa.me/5551996879727?text=Olá,%20gostaria%20de%20agendar%20uma%20consulta." target="_blank" rel="noopener" class="bg-accent text-primary font-bold py-4 px-10 rounded-full hover:bg-white hover:scale-105 transition duration-300 text-lg shadow-xl inline-flex items-center justify-center gap-2">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.886-.001 2.225.651 4.315 1.731 6.086l.287.468-1.173 4.249 4.35-1.14z" />
+                        </svg>
+                        Agendar Consulta agora
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="sobre" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-2/5">
+                        <div class="relative">
+                            <img src="foto-perfil" alt="André Bósio" class="rounded-2xl shadow-2xl mx-auto w-full max-w-sm object-cover border-4 border-white" loading="lazy">
+                            <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-accent rounded-full -z-10 hidden md:block opacity-50"></div>
+                        </div>
+                    </div>
+                    <div class="md:w-3/5 text-center md:text-left">
+                        <h2 class="text-3xl font-bold text-primary mb-6">Quem Sou Eu</h2>
+                        <p class="text-gray-600 mb-4 leading-relaxed text-lg">
+                            Sou <strong>André Bósio</strong>, fisioterapeuta formado pela UFRGS e osteopata pelo IBO. Tenho paixão por ajudar pessoas a viverem com mais saúde e qualidade de vida. 
+                        </p>
+                        <p class="text-gray-600 mb-4 leading-relaxed text-lg">
+                            Me dedico a entender a história e a origem das dores de cada paciente, tratando não apenas os sintomas, mas a causa do problema através de um olhar sistêmico e detalhado.
+                        </p>
+                        <h3 class="text-3xl font-bold text-primary mb-6">Minha Abordagem</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed text-lg">
+                            Acredito em uma abordagem de tratamento integrada e humanizada. Utilizo técnicas manuais da osteopatia e os recursos da fisioterapia para criar um plano de tratamento único e eficaz para você.
+                        </p>
+                        <div class="mt-8 flex flex-wrap justify-center md:justify-start gap-4">
+                            <span class="bg-primary text-white px-4 py-2 rounded-full text-sm font-semibold">Fisioterapeuta (UFRGS)</span>
+                            <span class="bg-primary text-white px-4 py-2 rounded-full text-sm font-semibold">Osteopata (IBO)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES SECTION -->
+        <section id="servicos" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-primary">Tratamentos Especializados</h2>
+                    <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Conheça as abordagens que utilizo para cuidar da sua saúde e bem-estar.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-10">
+                    <!-- Service 1 -->
+                    <div class="bg-light p-8 rounded-lg shadow-lg text-center transform hover:-translate-y-2 transition duration-300">
+                        <div class="flex justify-center items-center mb-4">
+                            <div class="bg-accent text-primary rounded-full p-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor"><path d="M10 3.5a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V4.25A.75.75 0 0110 3.5zM10 8.5a.5.5 0 01.5.5v1a.5.5 0 01-1 0v-1a.5.5 0 01.5-.5zM10 12.5a.5.5 0 01.5.5v1a.5.5 0 01-1 0v-1a.5.5 0 01.5-.5z" /><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm0 1.5a9.5 9.5 0 100-19 9.5 9.5 0 000 19z" clip-rule="evenodd" /></svg>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-primary mb-4">Osteopatia</h3>
+                        <p class="text-gray-600 leading-relaxed">Abordagem que utiliza técnicas manuais para identificar e corrigir disfunções de mobilidade, restabelecendo o equilíbrio e a capacidade de auto-cura do organismo.</p>
+                    </div>
+                    <!-- Service 2 -->
+                    <div class="bg-light p-8 rounded-lg shadow-lg text-center transform hover:-translate-y-2 transition duration-300">
+                        <div class="flex justify-center items-center mb-4">
+                            <div class="bg-accent text-primary rounded-full p-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-primary mb-4">Fisioterapia</h3>
+                        <p class="text-gray-600 leading-relaxed">Ciência que estuda e trata as disfunções do movimento humano. Reabilita lesões e alivia dores através de exercícios e técnicas terapêuticas especializadas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LOCATION SECTION -->
+        <section id="local" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-primary">Local de Atendimento</h2>
+                    <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Um espaço moderno e acolhedor no bairro Petrópolis em Porto Alegre.</p>
+                </div>
+                <div class="grid lg:grid-cols-2 gap-12 items-start mb-16">
+                    <div class="space-y-8">
+                        <div class="bg-light p-8 rounded-lg shadow-lg">
+                            <div class="flex items-start gap-4 mb-6">
+                                <div class="text-primary mt-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-primary">Endereço</h3>
+                                    <p class="text-gray-700">Av. Taquara, 438/504 - Petrópolis, Porto Alegre - RS, 90460-210</p>
+                                    <a href="https://www.google.com/maps/search/?api=1&query=Av.+Taquara,+438/504+-+Petr%C3%B3polis,+Porto+Alegre+-+RS" target="_blank" rel="noopener" class="text-primary font-bold hover:underline mt-2 inline-block">Ver no Google Maps</a>
+                                </div>
+                            </div>
+                            <p class="text-gray-600">Ambiente climatizado e infraestrutura completa para sua reabilitação.</p>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="overflow-hidden rounded-lg shadow-md aspect-video bg-gray-200">
+                                <img src="20251114_172540" alt="Espaço de avaliação" loading="lazy" decoding="async" class="w-full h-full object-cover transform hover:scale-105 transition duration-500">
+                            </div>
+                            <div class="overflow-hidden rounded-lg shadow-md aspect-video bg-gray-200">
+                                <img src="20250805_090807" alt="Ambiente moderno e iluminado" loading="lazy" decoding="async" class="w-full h-full object-cover transform hover:scale-105 transition duration-500">
+                            </div>
+                            <div class="overflow-hidden rounded-lg shadow-md aspect-video bg-gray-200">
+                                <img src="20240416_183735" alt="Osteopatia e Fisioterapia em um espaço integrado" loading="lazy" decoding="async" class="w-full h-full object-cover transform hover:scale-105 transition duration-500">
+                            </div>
+                            <div class="overflow-hidden rounded-lg shadow-md aspect-video bg-gray-200">
+                                <img src="20251114_172601" alt="Conforto" loading="lazy" decoding="async" class="w-full h-full object-cover transform hover:scale-105 transition duration-500">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full h-[500px] lg:h-full min-h-[400px] rounded-lg shadow-lg overflow-hidden relative bg-gray-200">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.2185566068886!2d-51.18956422361623!3d-30.030612674932064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x951977936a0d244f%3A0x7d6b38f83c483a30!2sAv.%20Taquara%2C%20438%20-%20Petr%C3%B3polis%2C%20Porto%20Alegre%20-%20RS%2C%2090460-210!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border: 0;" allowfullscreen="" loading="lazy" title="Mapa do Consultório"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS SECTION -->
+        <section id="avaliacoes" class="py-24 bg-primary text-light relative overflow-hidden">
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold mb-4">O que os pacientes falam</h2>
+                    <div class="w-24 h-1 bg-accent mx-auto mb-6"></div>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8 mb-16">
+                    <!-- Testimonial 1 -->
+                    <div class="bg-white text-gray-800 p-8 rounded-2xl shadow-xl flex flex-col h-full border-t-4 border-accent transform hover:-translate-y-1 transition duration-300">
+                        <div class="flex mb-4 text-accent">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                        </div>
+                        <p class="italic text-gray-600 mb-6 flex-grow leading-relaxed">
+                            "Profissional muito atencioso e competente! Resolveu queixa de constipação com terapia manual. Me surpreendi com a eficácia!"
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold text-sm">L</div>
+                            <span class="font-bold text-primary">Lorrana M.</span>
+                        </div>
+                    </div>
+                    <!-- Testimonial 2 -->
+                    <div class="bg-white text-gray-800 p-8 rounded-2xl shadow-xl flex flex-col h-full border-t-4 border-accent transform hover:-translate-y-1 transition duration-300">
+                        <div class="flex mb-4 text-accent">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                        </div>
+                        <p class="italic text-gray-600 mb-6 flex-grow leading-relaxed">
+                            "Excelente profissional! Atencioso, didático e interessado no paciente. Tratamento objetivo, passa muita segurança. Recomendo muito."
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold text-sm">R</div>
+                            <span class="font-bold text-primary">Renan R.</span>
+                        </div>
+                    </div>
+                    <!-- Testimonial 3 -->
+                    <div class="bg-white text-gray-800 p-8 rounded-2xl shadow-xl flex flex-col h-full border-t-4 border-accent transform hover:-translate-y-1 transition duration-300">
+                        <div class="flex mb-4 text-accent">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                        </div>
+                        <p class="italic text-gray-600 mb-6 flex-grow leading-relaxed">
+                            "Profissional incrível! Resolveu minhas dores cervicais e desconfortos musculares. Muito resolutivo e eficiente."
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold text-sm">P</div>
+                            <span class="font-bold text-primary">Paloma C.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <a href="https://www.google.com/search?q=andre+bosio+fisioterapia#reviews" target="_blank" rel="noopener" class="bg-accent text-primary font-bold py-4 px-10 rounded-full hover:bg-white transition duration-300 shadow-2xl inline-flex items-center gap-2">
+                        Ver Avaliações no Google
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ SECTION -->
+        <section id="faq" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-primary">Dúvidas Frequentes</h2>
+                </div>
+                <div class="max-w-3xl mx-auto space-y-4">
+                    <!-- FAQ 1 -->
+                    <div class="faq-item border-b border-gray-200 py-4 cursor-pointer">
+                        <div class="flex justify-between items-center text-left text-lg font-semibold text-primary">
+                            <span>Qual a diferença entre Fisioterapia e Osteopatia?</span>
+                            <svg class="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p class="text-gray-600 leading-relaxed">A Osteopatia foca no diagnóstico e tratamento de disfunções de mobilidade através de técnicas manuais, buscando a causa raiz. A Fisioterapia utiliza um leque amplo de recursos para reabilitação específica.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ 2 -->
+                    <div class="faq-item border-b border-gray-200 py-4 cursor-pointer">
+                        <div class="flex justify-between items-center text-left text-lg font-semibold text-primary">
+                            <span>Quantas sessões são necessárias?</span>
+                            <svg class="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p class="text-gray-600 leading-relaxed">Varia para cada pessoa. Após a avaliação inicial detalhada, será proposto um plano de tratamento com uma estimativa personalizada.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ 3 -->
+                    <div class="faq-item border-b border-gray-200 py-4 cursor-pointer">
+                        <div class="flex justify-between items-center text-left text-lg font-semibold text-primary">
+                            <span>Preciso de um encaminhamento médico?</span>
+                            <svg class="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p class="text-gray-600 leading-relaxed">Não é necessário. Fisioterapeutas são profissionais de primeira intenção capacitados para avaliar e diagnosticar disfunções do movimento.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="contato" class="bg-primary text-light py-12">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-2xl font-bold mb-4">Entre em Contato</h2>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-8 mb-10">
+                <a href="https://wa.me/5551996879727?text=Olá,%20gostaria%20de%20agendar%20uma%20consulta." target="_blank" class="flex items-center gap-3 text-accent font-semibold hover:text-light transition">WhatsApp</a>
+                <a href="https://www.instagram.com/andrebosiofisio" target="_blank" class="flex items-center gap-3 text-accent font-semibold hover:text-light transition">Instagram</a>
+                <a href="mailto:andrebosiopinto@gmail.com" class="flex items-center gap-3 text-accent font-semibold hover:text-light transition">Email</a>
+            </div>
+            <div class="border-t border-gray-700 pt-6">
+                <p class="text-gray-400">&copy; <span id="year"></span> André Bósio - Fisioterapia e Osteopatia.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING BUTTONS -->
+    <a href="https://wa.me/5551996879727?text=Olá,%20gostaria%20de%20agendar%20uma%20consulta." target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-transform transform hover:scale-110 z-50">
+        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.886-.001 2.225.651 4.315 1.731 6.086l.287.468-1.173 4.249 4.35-1.14z" /></svg>
+    </a>
+
+    <button id="back-to-top" class="fixed bottom-24 right-6 bg-primary text-white p-3 rounded-full shadow-lg opacity-0 pointer-events-none transition-opacity duration-300 border-2 border-white z-50">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" /></svg>
+    </button>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Set year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // FAQ accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                faqItems.forEach(i => i.classList.remove('active'));
+                if (!isActive) item.classList.add('active');
+            });
+        });
+
+        // Back to top button
+        const backToTopBtn = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+                backToTopBtn.classList.add('opacity-100', 'pointer-events-auto');
+            } else {
+                backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+                backToTopBtn.classList.remove('opacity-100', 'pointer-events-auto');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
